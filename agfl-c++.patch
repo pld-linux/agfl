@@ -1,0 +1,21 @@
+--- agfl-2.3/lexgen/src/entry.cc.orig	Mon Nov 24 16:37:00 2003
++++ agfl-2.3/lexgen/src/entry.cc	Fri Nov 28 11:33:38 2003
+@@ -20,6 +20,7 @@
+ 
+ using namespace std;
+ #include <iostream>
++#include <iterator>
+ #include "entry.h"
+ 
+ void
+--- agfl-2.3/lexgen/src/findtrie.c.orig	Mon May  7 14:13:09 2001
++++ agfl-2.3/lexgen/src/findtrie.c	Fri Nov 28 11:38:25 2003
+@@ -673,7 +673,7 @@
+ 	*/
+     info = find_next_prefix(buf, trie, &p);
+     if (info < 0)
+-      printf("%s\n", buf);
++      printf("%s\n", (char *)buf);
+     else
+       while (info >= 0)
+         info = find_next_prefix(0, trie, &p);
