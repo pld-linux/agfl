@@ -1,0 +1,13 @@
+--- agfl-2.3/utils/scanner.h.orig	Fri Oct 17 14:36:29 2003
++++ agfl-2.3/utils/scanner.h	Fri Nov 28 12:06:48 2003
+@@ -24,8 +24,9 @@
+ 
+ using namespace std;
+ #include <stdlib.h>
++#ifndef yyFlexLexerOnce
+ #include <FlexLexer.h>
+-
++#endif
+ 
+ //------------------------------------------------------------------------------
+ // Class Scanner
