@@ -1,0 +1,11 @@
+--- man/man1/Makefile.am~	Tue Nov 25 18:22:20 2003
++++ man/man1/Makefile.am	Tue Nov 25 18:36:46 2003
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+-mandir = $(prefix)/man
++mandir = $(prefix)/man
+ man1dir = $(mandir)/man1
+-man1_DATA = $(EXTRA_DIST)
++man1DATA = $(EXTRA_DIST)
+ 
+ EXTRA_DIST = agfl.1 gen.1 gra2o.1 lexgen.1
