@@ -1,11 +1,120 @@
---- man/man1/Makefile.am~	Tue Nov 25 18:22:20 2003
-+++ man/man1/Makefile.am	Tue Nov 25 18:36:46 2003
-@@ -1,6 +1,6 @@
+--- agfl-2.3/man/man1/Makefile.am~	Tue Nov 25 18:22:20 2003
++++ agfl-2.3/man/man1/Makefile.am	Tue Nov 25 18:36:46 2003
+@@ -1,6 +1,4 @@
  ## Process this file with automake to produce Makefile.in
 -mandir = $(prefix)/man
-+mandir = $(prefix)/man
- man1dir = $(mandir)/man1
+-man1dir = $(mandir)/man1
 -man1_DATA = $(EXTRA_DIST)
-+man1DATA = $(EXTRA_DIST)
++man1_MANS = $(EXTRA_DIST)
  
  EXTRA_DIST = agfl.1 gen.1 gra2o.1 lexgen.1
+--- agfl-2.3/liblexicon/src/Makefile.am.orig	Tue Jul 29 13:17:17 2003
++++ agfl-2.3/liblexicon/src/Makefile.am	Fri Nov 28 11:41:30 2003
+@@ -8,8 +8,8 @@
+ include_HEADERS	= lexicon.h lexiconutil.h str_util.h # dat_reading.h dat_scanner.h
+ 
+ #CFLAGS = -DDEBUG -Wall -ggdb @GLIB_CFLAGS@
+-CFLAGS = -Wall -ggdb @GLIB_CFLAGS@ ${AM_CFLAGS}
+-CFLAGS += -O2
++AM_CFLAGS = -Wall @GLIB_CFLAGS@
++#CFLAGS += -O2
+ #CFLAGS += -Werror
+ 
+ liblexicon_la_SOURCES = \
+--- agfl-2.3/gen/rts/nmrts/Makefile.am.orig	Wed Oct 17 15:48:30 2001
++++ agfl-2.3/gen/rts/nmrts/Makefile.am	Fri Nov 28 11:39:57 2003
+@@ -1,9 +1,9 @@
+ EXTRA_DIST = Makefile.cygwin
+ lib_LTLIBRARIES	= libnmrts.la
+-CFLAGS = -Wall
++AM_CFLAGS = -Wall
+ 
+-CFLAGS += -O2
+-CFLAGS += -ggdb
++#CFLAGS += -O2
++#CFLAGS += -ggdb
+ #CFLAGS += -Werror              # rtslex.c will barf up, so default is disabled
+ #CFLAGS += -DDEBUG
+ 
+--- agfl-2.3/gen/rts/pmrts/Makefile.am.orig	Wed Oct 17 15:48:30 2001
++++ agfl-2.3/gen/rts/pmrts/Makefile.am	Fri Nov 28 11:40:09 2003
+@@ -1,8 +1,8 @@
+ EXTRA_DIST = Makefile.cygwin
+ lib_LTLIBRARIES	= libpmrts.la
+-CFLAGS = -DPMRTS -Wall
++AM_CFLAGS = -DPMRTS -Wall
+ 
+-CFLAGS += -O2
++#CFLAGS += -O2
+ #CFLAGS += -ggdb
+ #CFLAGS += -Werror	# rtslex.c will give errors, so default is disabled
+ #CFLAGS += -DDEBUG
+--- agfl-2.3/gen/src/Makefile.am.orig	Fri Oct 17 15:53:37 2003
++++ agfl-2.3/gen/src/Makefile.am	Fri Nov 28 11:40:37 2003
+@@ -8,18 +8,18 @@
+ gra2o_LDFLAGS      = @CDLLIBFLAG@ @CDLRTS@ @GLIB_LIBS@
+ gra2o_DEPENDENCIES = $(gra2o_LDADD)
+ 
+-CFLAGS = -Wall
++AM_CFLAGS = -Wall
+ 
+-CFLAGS += -ggdb
++#CFLAGS += -ggdb
+ #CFLAGS += -Werror
+-CFLAGS += -O2
++#CFLAGS += -O2
+ #CFLAGS += -DDEBUG
+ #CFLAGS += -DDEBUG_SCANNER
+ 
+ #
+ # For mygen/gen:
+ #
+-CFLAGS += -DGENGLIBFLAG="\"@GLIB_LIBS@ @GLIB_CFLAGS@ \"" \
++AM_CFLAGS += -DGENGLIBFLAG="\"@GLIB_LIBS@ @GLIB_CFLAGS@ \"" \
+ 	  -DGENBASE="\"$(prefix)\""
+ 
+ INCLUDES = -I@CDLINCPATH@ @GLIB_CFLAGS@ -I$(top_srcdir)/liblexicon/src \
+--- agfl-2.3/lexgen/src/Makefile.am.orig	Tue Nov 25 17:59:45 2003
++++ agfl-2.3/lexgen/src/Makefile.am	Fri Nov 28 11:42:31 2003
+@@ -41,11 +41,11 @@
+ dumptrie_SOURCES = dumptrie.cc
+ 
+ #LDFLAGS = -ggdb
+-LDFLAGS = -s
++#LDFLAGS = -s
+ 
+-CFLAGS = @GLIB_CFLAGS@
+-CFLAGS += -Wall
+-CFLAGS += -O2
++AM_CFLAGS = @GLIB_CFLAGS@
++#CFLAGS += -Wall
++#CFLAGS += -O2
+ #CFLAGS += -ggdb
+ #CFLAGS += -DDEBUG
+ #CFLAGS += -DCMP_DEBUG
+@@ -55,7 +55,7 @@
+ # for some reason, $INCLUDES is reset to empty on leto when compiling c++ code
+ CPPFLAGS = -I$(top_srcdir)/liblexicon/src
+ 
+-CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
++AM_CXXFLAGS = $(AM_CFLAGS) -fno-exceptions -fno-rtti
+ #CXXFLAGS += -Werror
+ 
+ YFLAGS = -d
+--- agfl-2.3/utils/Makefile.am.orig	Tue Nov 25 12:30:35 2003
++++ agfl-2.3/utils/Makefile.am	Fri Nov 28 11:42:12 2003
+@@ -5,10 +5,10 @@
+ bin_PROGRAMS = datconvert
+ # bin_PROGRAMS = datconvert agflgenprofiles
+ 
+-CFLAGS = -Wall -O2
+-CFLAGS += -ggdb
+-CXXFLAGS = $(CFLAGS)
+-LDFLAGS = -ggdb
++AM_CFLAGS = -Wall
++#CFLAGS += -ggdb
++AM_CXXFLAGS = $(AM_CFLAGS)
++#LDFLAGS = -ggdb
+ 
+ datconvert_SOURCES = \
+         datconvert.cc \
