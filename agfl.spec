@@ -6,7 +6,7 @@ Release:	0.1
 License:	GPL, partialy LGPL
 Group:		Development/Languages
 Source0:	ftp://ftp.cs.kun.nl/pub/agfl/2.0/unix/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	e093223c953882a571de9426fa32d984
+# Source0-md5:	59c7f460ffba3589a06bd881d1162707
 Patch0:		%{name}-acam.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
