@@ -1,5 +1,5 @@
 Summary:	AGFL - parser generator for natural languages
-Summary(pl.UTF-8):   AGFL - generator parserów języków naturalnych
+Summary(pl.UTF-8):	AGFL - generator parserów języków naturalnych
 Name:		agfl
 Version:	2.3
 Release:	0.1
