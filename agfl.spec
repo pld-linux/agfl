@@ -1,5 +1,5 @@
 Summary:	AGFL - parser generator for natural languages
-Summary(pl):	AGFL - generator parser體 j陑yk體 naturalnych
+Summary(pl.UTF-8):   AGFL - generator parser贸w j臋zyk贸w naturalnych
 Name:		agfl
 Version:	2.3
 Release:	0.1
@@ -26,10 +26,10 @@ The AGFL parser generation system for Natural Languages generates
 efficient parsers from AGFL grammars. It includes a lexicon system
 suitable for the large lexica needed in real life NLP applications.
 
-%description -l pl
-System generowania parser體 AGFL dla j陑yk體 naturalnych generuje
+%description -l pl.UTF-8
+System generowania parser贸w AGFL dla j臋zyk贸w naturalnych generuje
 wydajne parsery z gramatyk AGFL. Zawiera system leksykalny odpowiedni
-dla du縴ch s硂wnik體 potrzebnych w prawdziwych aplikacjach NLP.
+dla du偶ych s艂ownik贸w potrzebnych w prawdziwych aplikacjach NLP.
 
 %prep
 %setup -q
